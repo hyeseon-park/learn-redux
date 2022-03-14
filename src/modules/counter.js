@@ -7,14 +7,12 @@ export const setDiff = (diff) => ({
   diff,
 });
 
-export const increase = (diff) => ({
+export const increase = () => ({
   type: INCREASE,
-  diff,
 });
 
-export const decrease = (diff) => ({
+export const decrease = () => ({
   type: DECREASE,
-  diff,
 });
 
 /* 초기 상태 선언 */
@@ -34,12 +32,12 @@ export default function counter(state = initialState, action) {
     case INCREASE:
       return {
         ...state,
-        diff: state.number + state.diff,
+        number: state.number + state.diff,
       };
     case DECREASE:
       return {
         ...state,
-        diff: state.number - state.diff,
+        number: state.number - state.diff,
       };
     default:
       return state;
