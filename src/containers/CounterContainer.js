@@ -4,10 +4,8 @@ import Counter from "../components/Counter";
 import { increase, decrease, setDiff } from "../modules/counter";
 
 const CounterContainer = () => {
-  const { number, diff } = useSelector((state) => ({
-    number: state.counter.number,
-    diff: state.counter.diff,
-  }));
+  const number = useSelector((state) => state.counter.number);
+  const diff = useSelector((state) => state.counter.diff);
 
   //useDispatch는 리덕스 스토어의 dispatch를 함수에서 사용할 수 있게 해주는 Hook
   const dispatch = useDispatch();
