@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./modules";
 import { Provider } from "react-redux";
+import logger from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
+import ReduxThunk from "redux-thunk";
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(ReduxThunk, logger))
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,5 +19,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-reportWebVitals();
